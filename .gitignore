@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Allow specific files
+!.gitignore
+!Build.ps1
+!README.md
+!{Name}.psd1
+!{Name}.psm1
+
+# Ignore directories (optional, to ensure no unintended folders are included)
+!*/
