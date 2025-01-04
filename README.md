@@ -1,0 +1,2 @@
+# psmoduletemplate
+PowerShell module template.
