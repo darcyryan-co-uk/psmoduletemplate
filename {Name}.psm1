@@ -1,12 +1,15 @@
 $moduleName = Get-Item $PSScriptRoot | % Parent | % BaseName
 $moduleManifest = "$PSScriptRoot\$moduleName.psd1"
+$classesPath = "$PSScriptRoot\Classes"
 $publicFunctionsPath = "$PSScriptRoot\Public"
 $privateFunctionsPath = "$PSScriptRoot\Private"
 $currentManifest = Test-ModuleManifest $moduleManifest
 
 $aliases = @()
+$classes = Get-ChildItem $classesPath -Recurse -File | ? Extension -eq '.ps1'
 $publicFunctions = Get-ChildItem $publicFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
 $privateFunctions = Get-ChildItem $privateFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
+
 $publicFunctions | foreach { 
     . $_.FullName
 
@@ -20,7 +23,8 @@ $publicFunctions | foreach {
         Export-ModuleMember -Function $_.BaseName
     }
 }
-$privateFunctions | foreach { 
+
+$classes, $privateFunctions | foreach { 
     . $_.FullName
 }
 
