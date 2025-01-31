@@ -70,14 +70,14 @@ To run the script, open a PowerShell terminal and execute the script with the de
 This command creates a `NetworkTools` module with the following default settings:
 
 - Author: Current user (`$env:UserDomain\$env:UserName`)
-- Company: DarcyRyan
+- Company: DR
 - Version: 1.0
 - Output Directory: Current directory
 
 ### Example 2: Creating a Module with Custom Metadata
 
 ```powershell
-.\Build.ps1 -Name 'AdminTools' -Description 'Admin tools for network management' -Version '1.2.0' -Author 'Joe Bloggs' -Company 'DarcyRyan'
+.\Build.ps1 -Name 'AdminTools' -Description 'Admin tools for network management' -Version '1.2.0' -Author 'Joe Bloggs' -Company 'DR'
 ```
 
 This creates a module named `AdminTools` with:
@@ -85,7 +85,7 @@ This creates a module named `AdminTools` with:
 - Custom description: Admin tools for network management
 - Version: 1.2.0
 - Author: Joe Bloggs
-- Company: DarcyRyan
+- Company: DR
 
 ### Example 3: Specifying an Output Directory
 
