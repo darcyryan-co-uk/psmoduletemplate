@@ -6,7 +6,7 @@ $privateFunctionsPath = "$PSScriptRoot\Private"
 $currentManifest = Test-ModuleManifest $moduleManifest
 
 $aliases = @()
-$classes = Get-ChildItem $classesPath -Recurse -File | ? Extension -in '.ps1', '.cs'
+$classes = Get-ChildItem $classesPath -Recurse -File | ? Extension -in '.ps1', '.cs', '.js'
 $publicFunctions = Get-ChildItem $publicFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
 $privateFunctions = Get-ChildItem $privateFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
 
@@ -31,6 +31,10 @@ $classes, $privateFunctions | foreach {
     elseif ($_.Extension -eq '.cs') {
         $CSharpCode = $_.FullName
         Add-Type -TypeDefinition $CSharpCode -Language CSharp
+    }
+    elseif ($_.Extension -eq '.js') {
+        $JScriptCode = $_.FullName
+        Add-Type -TypeDefinition $JScriptCode -Language JScript
     }
 }
 

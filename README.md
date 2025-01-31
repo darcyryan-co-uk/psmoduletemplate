@@ -23,7 +23,7 @@ The `Build.ps1` script simplifies the creation of PowerShell modules. It generat
 - Template-based File Generation: Replaces placeholders in template files with user-provided values.
 - Customizable Module Metadata: Set values such as `Name`, `Description`, `Version`, `Author`, and more.
 - Error Handling: Checks for existing module directories and stops execution if overwriting is detected.
-- CSharp class support.
+- CSharp & JavaScript class support.
 
 ## Prerequisites
 
