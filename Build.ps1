@@ -33,11 +33,13 @@ function ConvertTo-Replaced {
         $Index
     )
 
-    $Index.Keys | foreach {
-        $Source = $Source -replace $_, $Replace.$_
+    $output = $Source
+
+    $Index.Keys.split() | foreach {
+        $output = $output -replace $_, $Index.$_
     }
 
-    return $Source
+    return $output
 }
 
 $regex = @{
@@ -58,7 +60,7 @@ $targetFiles = @(
     "$PSScriptRoot\{Name}.psm1"
 )
 
-$moduleDirectory = "$OutputDirectory\$Name\$($regex.'{Version}')"
+$moduleDirectory = "$OutputDirectory\$Name\$Version"
 
 if (Test-Path $moduleDirectory) {
     Write-Error "unable to overwrite '$moduleDirectory'." -ErrorAction Stop
@@ -78,6 +80,6 @@ $targetFiles | foreach {
     $content = Get-Content -Path $_ -Raw | ConvertTo-Replaced -Index $regex
     $content | Set-Content -Path $_
 
-    $name = Get-Item -Path $_ | % Name | ConvertTo-Replaced -Index $regex
-    $_ | Rename-Item -NewName $name
+    $newName = Get-Item -Path $_ | % Name | ConvertTo-Replaced -Index $regex
+    $_ | Rename-Item -NewName $newName
 }
