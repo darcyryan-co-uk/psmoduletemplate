@@ -6,7 +6,7 @@ $privateFunctionsPath = "$PSScriptRoot\Private"
 $currentManifest = Test-ModuleManifest $moduleManifest
 
 $aliases = @()
-$classes = Get-ChildItem $classesPath -Recurse -File | ? Extension -eq '.ps1'
+$classes = Get-ChildItem $classesPath -Recurse -File | ? Extension -in '.ps1', '.cs'
 $publicFunctions = Get-ChildItem $publicFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
 $privateFunctions = Get-ChildItem $privateFunctionsPath -Recurse -File | ? Extension -eq '.ps1'
 
@@ -24,8 +24,14 @@ $publicFunctions | foreach {
     }
 }
 
-$classes, $privateFunctions | foreach { 
-    . $_.FullName
+$classes, $privateFunctions | foreach {
+    if ($_.Extension -eq '.ps1') {
+        . $_.FullName
+    }
+    elseif ($_.Extension -eq '.cs') {
+        $CSharpCode = $_.FullName
+        Add-Type -TypeDefinition $CSharpCode -Language CSharp
+    }
 }
 
 $functionsAdded = $publicFunctions | ? BaseName -notin $currentManifest.ExportedFunctions.Keys
