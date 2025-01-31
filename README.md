@@ -1,5 +1,5 @@
 
-# PowerShell Module Builder Script
+# PowerShell Module Builder
 
 Welcome to the **PowerShell Module Builder**!
 This script allows you to automatically generate a PowerShell module with customizable properties. 
