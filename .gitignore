@@ -3,7 +3,8 @@
 
 # Allow specific files
 !.gitignore
-!Build.ps1
+!build.ps1
+!LICENSE
 !README.md
 !{Name}.psd1
 !{Name}.psm1
