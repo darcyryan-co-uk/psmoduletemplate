@@ -5,7 +5,7 @@ param(
     $Description = '',
     
     [version]
-    $Version = '1.0',
+    $Version = '1.0.0',
 
     [string]
     $Author = $env:USERNAME,
