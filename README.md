@@ -39,7 +39,7 @@ To run the script, open a PowerShell terminal and execute the script with the de
 ### Basic Usage
 
 ```powershell
-.\Build.ps1 -Name "MyModule"
+.\Build.ps1 -Name 'MyModule'
 ```
 
 **Warning:** By default, the `-OutputDirectory` variable is set as the current working directory. This means that the module will be created within the parent directory of the current function. To specify a different path, use the `-OutputDirectory` parameter explicitly.
@@ -48,15 +48,15 @@ To run the script, open a PowerShell terminal and execute the script with the de
 
 - `-Name`: **(Mandatory)** The name of the module. Must not contain spaces.
 - `-Description`: A short description of the module. Defaults to an empty string.
-- `-Version`: The version number of the module. Defaults to `1.0`.
-- `-Author`: The author of the module. Defaults to the current user (`$env:UserDomain\$env:UserName`).
-- `-Company`: The company associated with the module. Defaults to `DarcyRyan`.
+- `-Version`: The version number of the module. Defaults to `1.0.0`.
+- `-Author`: The author of the module. Defaults to the current user (`$env:UserName`).
+- `-Company`: The company associated with the module. Defaults to `DR`.
 - `-GUID`: A unique identifier for the module. Automatically generated if not specified.
 - `-DateTime`: The creation date of the module. Defaults to the current date.
 - `-OutputDirectory`: The directory where the module will be created. Defaults to the current directory.
 
 ```powershell
-.\Build.ps1 -Name "SampleModule" -Description "A sample PowerShell module" -Version "1.0.1" -Author "John Doe" -Company "ExampleCorp" -OutputDirectory "C:\Modules"
+.\Build.ps1 -Name 'SampleModule' -Description 'A sample PowerShell module' -Version '1.0.1' -Author 'John Doe' -Company 'ExampleCorp' -OutputDirectory 'C:\Modules'
 ```
 
 ## Examples
@@ -64,7 +64,7 @@ To run the script, open a PowerShell terminal and execute the script with the de
 ### Example 1: Creating a Simple Module
 
 ```powershell
-.\Build.ps1 -Name "NetworkTools"
+.\Build.ps1 -Name 'NetworkTools'
 ```
 
 This command creates a `NetworkTools` module with the following default settings:
@@ -77,7 +77,7 @@ This command creates a `NetworkTools` module with the following default settings
 ### Example 2: Creating a Module with Custom Metadata
 
 ```powershell
-.\Build.ps1 -Name "AdminTools" -Description "Admin tools for network management" -Version "1.2.0" -Author "Joe Bloggs" -Company "DarcyRyan"
+.\Build.ps1 -Name 'AdminTools' -Description 'Admin tools for network management' -Version '1.2.0' -Author 'Joe Bloggs' -Company 'DarcyRyan'
 ```
 
 This creates a module named `AdminTools` with:
@@ -90,7 +90,7 @@ This creates a module named `AdminTools` with:
 ### Example 3: Specifying an Output Directory
 
 ```powershell
-.\Build.ps1 -Name "DataProcessing" -OutputDirectory "D:\PowerShell\Modules"
+.\Build.ps1 -Name 'DataProcessing' -OutputDirectory 'D:\PowerShell\Modules'
 ```
 
 This command generates the `DataProcessing` module in the specified `D:\PowerShell\Modules` directory.
@@ -100,7 +100,7 @@ This command generates the `DataProcessing` module in the specified `D:\PowerShe
 To explicitly specify where the module should be created, use the `-OutputDirectory` argument:
 
 ```powershell
-.\Build.ps1 -Name "MyModule" -OutputDirectory "C:\Git\MyModule"
+.\Build.ps1 -Name 'MyModule' -OutputDirectory 'C:\Git\MyModule'
 ```
 
 This command will create the `MyModule` in the `C:\Git\MyModule` directory.
